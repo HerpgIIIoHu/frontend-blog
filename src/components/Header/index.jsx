@@ -30,7 +30,7 @@ export const Header = () => {
                 style={{ borderRadius: '50%', position: 'absolute', right: '420px', top: '13px' }}
                 width={30}
                 height={30}
-                src={userData ? userData.avatarUrl : ''}
+                src={userData ? userData.avatarUrl : 'https://vtp-club.ru/img/user.png'}
                 alt='userAvatar'
               />
             )}
