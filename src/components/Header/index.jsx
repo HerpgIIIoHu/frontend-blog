@@ -25,13 +25,16 @@ export const Header = () => {
             <div>Blog</div>
           </Link>
           <div>
-            <img
-              style={{ borderRadius: '50%', position: 'absolute', right: '420px', top: '13px' }}
-              width={30}
-              height={30}
-              src={userData ? userData.avatarUrl : ''}
-              alt='userAvatar'
-            />
+            {isAuth && (
+              <img
+                style={{ borderRadius: '50%', position: 'absolute', right: '420px', top: '13px' }}
+                width={30}
+                height={30}
+                src={userData ? userData.avatarUrl : ''}
+                alt='userAvatar'
+              />
+            )}
+
             <div className={styles.buttons}>
               {isAuth ? (
                 <>
