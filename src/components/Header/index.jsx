@@ -9,7 +9,7 @@ import { logout, selectIsAuth } from '../../redux/slices/auth';
 export const Header = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(selectIsAuth);
-
+  const userData = useSelector((state) => state.auth.data);
   const onClickLogout = () => {
     if (window.confirm('Вы действительно хотите выйти?')) {
       dispatch(logout());
@@ -28,6 +28,7 @@ export const Header = () => {
           <div className={styles.buttons}>
             {isAuth ? (
               <>
+                <img width={30} height={30} src={userData.avatarUrl} />
                 <Link to='/add-post'>
                   <Button variant='contained'>Написать статью</Button>
                 </Link>
