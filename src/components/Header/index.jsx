@@ -27,7 +27,7 @@ export const Header = () => {
           <div>
             {isAuth && (
               <img
-                style={{ borderRadius: '50%', position: 'absolute', right: '420px', top: '13px' }}
+                style={{ borderRadius: '50%', position: 'absolute', right: '28%', top: '13px' }}
                 width={30}
                 height={30}
                 src={userData ? userData.avatarUrl : 'https://vtp-club.ru/img/user.png'}
