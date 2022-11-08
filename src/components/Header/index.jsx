@@ -29,7 +29,7 @@ export const Header = () => {
               style={{ borderRadius: '50%', position: 'absolute', right: '420px', top: '13px' }}
               width={30}
               height={30}
-              src={userData.avatarUrl ? userData.avatarUrl : ''}
+              src={userData ? userData.avatarUrl : ''}
               alt='userAvatar'
             />
             <div className={styles.buttons}>
