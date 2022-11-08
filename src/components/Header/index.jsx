@@ -25,7 +25,7 @@ export const Header = () => {
             <div>Blog</div>
           </Link>
 
-          <div style={{ textAlign: 'center', alignItems: 'center' }} className={styles.buttons}>
+          <div className={styles.buttons}>
             {isAuth ? (
               <>
                 <img

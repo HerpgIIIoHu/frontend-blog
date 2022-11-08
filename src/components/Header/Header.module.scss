@@ -27,6 +27,11 @@
 }
 
 .buttons {
+  align-items: center;
+  text-align: center;
+  img {
+    margin-top: 30px;
+  }
   button {
     margin-left: 10px;
   }
