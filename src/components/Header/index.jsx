@@ -29,7 +29,7 @@ export const Header = () => {
             {isAuth ? (
               <>
                 <img
-                  style={{ borderRadius: '50%' }}
+                  style={{ borderRadius: '50%', marginTop: '30px' }}
                   width={30}
                   height={30}
                   src={userData.avatarUrl}
