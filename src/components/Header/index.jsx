@@ -24,33 +24,35 @@ export const Header = () => {
           <Link className={styles.logo} to='/'>
             <div>Blog</div>
           </Link>
-
-          <div className={styles.buttons}>
-            {isAuth ? (
-              <>
-                <img
-                  style={{ borderRadius: '50%', marginTop: '30px' }}
-                  width={30}
-                  height={30}
-                  src={userData.avatarUrl}
-                />
-                <Link to='/add-post'>
-                  <Button variant='contained'>Написать статью</Button>
-                </Link>
-                <Button onClick={onClickLogout} variant='contained' color='error'>
-                  Выйти
-                </Button>
-              </>
-            ) : (
-              <>
-                <Link to={'/login'}>
-                  <Button variant='outlined'>Войти</Button>
-                </Link>
-                <Link to='/register'>
-                  <Button variant='contained'>Создать аккаунт</Button>
-                </Link>
-              </>
-            )}
+          <div>
+            <img
+              style={{ borderRadius: '50%' }}
+              width={30}
+              height={30}
+              src={userData.avatarUrl}
+              alt='userAvatar'
+            />
+            <div className={styles.buttons}>
+              {isAuth ? (
+                <>
+                  <Link to='/add-post'>
+                    <Button variant='contained'>Написать статью</Button>
+                  </Link>
+                  <Button onClick={onClickLogout} variant='contained' color='error'>
+                    Выйти
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Link to={'/login'}>
+                    <Button variant='outlined'>Войти</Button>
+                  </Link>
+                  <Link to='/register'>
+                    <Button variant='contained'>Создать аккаунт</Button>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </Container>
