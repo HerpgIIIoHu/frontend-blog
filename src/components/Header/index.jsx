@@ -26,7 +26,7 @@ export const Header = () => {
           </Link>
           <div>
             <img
-              style={{ borderRadius: '50%', marginTop: '20px' }}
+              style={{ borderRadius: '50%', position: 'absolute', right: '420px', top: '13px' }}
               width={30}
               height={30}
               src={userData.avatarUrl}
