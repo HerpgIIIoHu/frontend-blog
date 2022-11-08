@@ -55,17 +55,18 @@ export const Home = () => {
             items={[
               {
                 user: {
-                  fullName: 'Вася Пупкин',
-                  avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
+                  fullName: 'Владимир Путин',
+                  avatarUrl:
+                    'https://metaratings.ru/upload/iblock/1bc/1bc51179016203083286cb0a37ec30af.jpg',
                 },
-                text: 'Это тестовый комментарий',
+                text: 'Ну Миха конечно еще тот лох',
               },
               {
                 user: {
-                  fullName: 'Иван Иванов',
-                  avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
+                  fullName: 'Рамзан Кадыров',
+                  avatarUrl: 'https://discover24.ru/wp-content/uploads/2022/05/23629.jpg',
                 },
-                text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',
+                text: 'Аджарагуджу',
               },
             ]}
             isLoading={false}
