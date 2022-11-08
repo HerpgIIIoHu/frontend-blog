@@ -28,7 +28,12 @@ export const Header = () => {
           <div style={{ textAlign: 'center', alignItems: 'center' }} className={styles.buttons}>
             {isAuth ? (
               <>
-                <img width={30} height={30} src={userData.avatarUrl} />
+                <img
+                  style={{ borderRadius: '50%' }}
+                  width={30}
+                  height={30}
+                  src={userData.avatarUrl}
+                />
                 <Link to='/add-post'>
                   <Button variant='contained'>Написать статью</Button>
                 </Link>
