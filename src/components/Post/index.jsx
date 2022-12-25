@@ -58,7 +58,7 @@ export const Post = ({
         />
       )}
       <div className={styles.wrapper}>
-        <UserInfo {...user} additionalText={createdAt} />
+        <UserInfo {...user} additionalText={createdAt.replace('T', ' ').slice(0, 16)} />
         <div className={styles.indention}>
           <h2 className={clsx(styles.title, { [styles.titleFull]: isFullPost })}>
             {isFullPost ? title : <Link to={`/posts/${id}`}>{title}</Link>}
@@ -66,7 +66,7 @@ export const Post = ({
           <ul className={styles.tags}>
             {tags.map((name) => (
               <li key={name}>
-                <Link to={`/tag/${name}`}>#{name}</Link>
+                <Link to={`/tags/${name}`}>#{name}</Link>
               </li>
             ))}
           </ul>

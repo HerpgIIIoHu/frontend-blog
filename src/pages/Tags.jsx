@@ -1,52 +1,35 @@
 import React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Grid from '@mui/material/Grid';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { fetchPosts } from '../redux/slices/post';
 
-import { Post } from '../components/Post';
+import Grid from '@mui/material/Grid';
 import { TagsBlock } from '../components/TagsBlock';
 import { CommentsBlock } from '../components/CommentsBlock';
-import { fetchPosts, fetchPostsPopular, fetchTags } from '../redux/slices/post';
+import { Post } from '../components';
 
-export const Home = () => {
+export const Tags = ({}) => {
   const dispatch = useDispatch();
-  const { posts, tags } = useSelector((state) => state.posts);
-  const [activeTab, setActiveTab] = React.useState(0);
-
-  const handleClickTabPopular = () => {
-    setActiveTab(1);
-    dispatch(fetchPostsPopular());
-  };
-  const handleClickTabNew = () => {
-    setActiveTab(0);
+  React.useEffect(() => {
     dispatch(fetchPosts());
-  };
-
+  }, []);
+  const { type } = useParams();
+  const { posts } = useSelector((state) => state.posts);
   const userData = useSelector((state) => state.auth.data);
-
   const isPostsLoading = posts.status === 'loading';
   const isTagsLoading = posts.status === 'loading';
-  const comments = posts.items.map((obj, index) => {
+
+  const postTags = posts.items.filter((obj, index) => obj.tags.includes(type));
+  const comments = postTags.map((obj, index) => {
     return obj.comments;
   });
 
-  console.log(comments.flat());
-
-  React.useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchTags());
-  }, []);
-
   return (
     <>
-      <Tabs style={{ marginBottom: 15 }} value={activeTab} aria-label='basic tabs example'>
-        <Tab onClick={handleClickTabNew} label='Новые' />
-        <Tab onClick={handleClickTabPopular} label='Популярные' />
-      </Tabs>
       <Grid container spacing={4}>
         <Grid xs={8} item>
-          {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) =>
+          <h1>#{type}</h1>
+          {(isPostsLoading ? [...Array(5)] : postTags).map((obj, index) =>
             isPostsLoading ? (
               <Post key={index} isLoading={true} />
             ) : (
@@ -66,7 +49,6 @@ export const Home = () => {
           )}
         </Grid>
         <Grid xs={4} item>
-          <TagsBlock items={tags.items} isLoading={isTagsLoading} />
           <CommentsBlock items={comments.flat()} isLoading={false} />
         </Grid>
       </Grid>

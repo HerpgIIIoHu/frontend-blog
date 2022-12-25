@@ -10,7 +10,8 @@ export const FullPost = () => {
   const [data, setData] = React.useState();
   const [isLoading, setIsLoading] = React.useState(true);
   const { id } = useParams();
-  console.log(data);
+  const [comments, setComments] = React.useState([]);
+
   React.useEffect(() => {
     axios
       .get(`/posts/${id}`)
@@ -23,6 +24,11 @@ export const FullPost = () => {
         alert('Ошибка при получении статьи');
       });
   }, []);
+  React.useEffect(() => {
+    if (Array.isArray(data?.comments)) {
+      setComments(data.comments);
+    }
+  }, [data]);
   if (isLoading) {
     return <Post isLoading={isLoading} />;
   }
@@ -42,26 +48,8 @@ export const FullPost = () => {
       >
         <ReactMarkdown>{data.text}</ReactMarkdown>
       </Post>
-      <CommentsBlock
-        items={[
-          {
-            user: {
-              fullName: 'Вася Пупкин',
-              avatarUrl: 'https://mui.com/static/images/avatar/1.jpg',
-            },
-            text: 'Это тестовый комментарий 555555',
-          },
-          {
-            user: {
-              fullName: 'Иван Иванов',
-              avatarUrl: 'https://mui.com/static/images/avatar/2.jpg',
-            },
-            text: 'When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top',
-          },
-        ]}
-        isLoading={false}
-      >
-        <Index />
+      <CommentsBlock items={comments} isLoading={isLoading}>
+        <Index setComments={setComments} id={id} comments={comments} />
       </CommentsBlock>
     </>
   );

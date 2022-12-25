@@ -52,6 +52,7 @@ export const AddPost = () => {
         tags: tags.split(','),
         imageUrl,
         text,
+        comments: [],
       };
 
       const { data } = isEditing
