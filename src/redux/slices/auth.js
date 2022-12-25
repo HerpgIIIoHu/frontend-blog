@@ -73,7 +73,6 @@ const authSlice = createSlice({
 });
 
 export const selectIsAuth = (state) => Boolean(state.auth.data);
-export const regData = (state) => Boolean(state.auth.dataReg);
 export const authReducer = authSlice.reducer;
 export const { logout } = authSlice.actions;
 export const { regClean } = authSlice.actions;
